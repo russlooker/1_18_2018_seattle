@@ -12,6 +12,21 @@ view: users {
     sql: ${TABLE}.age ;;
   }
 
+  dimension: age_tier {
+    label: "(Demographics -- Age Group)"
+    sql: ${age} ;;
+    type: tier
+    tiers: [0,10,20,30,40,50,100, 150]
+    style: integer
+  }
+
+  dimension: can_drink {
+   label: "Can Drink......legally"
+   sql: ${age} >= 23 ;;
+   type: yesno
+  }
+
+
   dimension: city {
     type: string
     sql: ${TABLE}.city ;;
