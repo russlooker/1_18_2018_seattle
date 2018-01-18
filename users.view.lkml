@@ -57,9 +57,34 @@ view: users {
     sql: ${TABLE}.email ;;
   }
 
+  filter: user_email_selector {
+    type: string
+    suggest_dimension: users.email
+  }
+
+  dimension: user_comparison {
+    type: string
+    sql:
+      CASE WHEN {% condition user_email_selector %} ${email} {% endcondition %} then 'Comparison Group'
+      else 'Rest of Population'
+      END
+
+    ;;
+  }
+
+
+
+
   dimension: first_name {
     type: string
-    sql: ${TABLE}.first_name ;;
+    sql:
+    {% if last_name._in_query  %}
+      'Name Hidden'
+    {% else %}
+    ${TABLE}.first_name
+    {% endif %}
+    ;;
+
   }
 
   dimension: gender {

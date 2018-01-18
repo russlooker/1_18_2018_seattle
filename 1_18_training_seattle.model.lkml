@@ -9,9 +9,16 @@ named_value_format: my_custom_format {
   value_format: "0.00"
 }
 
+datagroup: nightly_etl {
+  sql_trigger: select current_date ;;
+  max_cache_age: "24 hours"
+}
+
+
 # My nice comment
 
 explore: order_items {
+  persist_with: nightly_etl
   join: inventory_items {
     type: left_outer
     sql_on: ${order_items.inventory_item_id} = ${inventory_items.id} ;;
@@ -24,6 +31,20 @@ explore: order_items {
     relationship: many_to_one
   }
 
+  join: user_order_facts {
+    type: left_outer
+    sql_on: ${users.id} = ${user_order_facts.id} ;;
+    relationship: one_to_one
+  }
+
+  join: ndt_user_order_facts {
+    type: left_outer
+    sql_on:  ${users.id} = ${ndt_user_order_facts.id} ;;
+    relationship: one_to_one
+  }
+
 }
 
-explore: order_totals {}
+
+
+explore: user_order_facts {}
