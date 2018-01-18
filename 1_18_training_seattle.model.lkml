@@ -9,8 +9,6 @@ named_value_format: my_custom_format {
   value_format: "0.00"
 }
 
-
-
 # My nice comment
 
 explore: order_items {
