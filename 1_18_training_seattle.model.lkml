@@ -57,5 +57,8 @@ explore: order_items {
 }
 
 
+explore: events {}
+
+
 
 # explore: user_order_facts {}
