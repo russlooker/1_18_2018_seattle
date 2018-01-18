@@ -47,4 +47,4 @@ explore: order_items {
 
 
 
-explore: user_order_facts {}
+# explore: user_order_facts {}
