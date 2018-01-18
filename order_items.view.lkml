@@ -62,7 +62,7 @@ view: order_items {
 
   dimension: sale_price {
     type: number
-    sql: ${TABLE}.sale_price ;;
+    sql: ${TABLE}.sale_price * 1.10;;
   }
 
   dimension_group: shipped {
@@ -89,6 +89,12 @@ view: order_items {
     # hidden: yes
     sql: ${TABLE}.user_id ;;
   }
+
+  measure: total_sale_price {
+    type: sum
+    sql: ${sale_price} ;;
+  }
+
 
   measure: count {
     type: count
