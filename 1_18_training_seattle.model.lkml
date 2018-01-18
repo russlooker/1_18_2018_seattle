@@ -18,6 +18,7 @@ datagroup: nightly_etl {
 # My nice comment
 
 explore: order_items {
+  label: "Order Related Facts"
   access_filter: {
     field: products.brand
     user_attribute: retailer_id
@@ -32,11 +33,13 @@ explore: order_items {
 
   join: products {
     type: left_outer
-    sql:  ${inventory_items.product_id} = ${products.id} ;;
+    sql_on:  ${inventory_items.product_id} = ${products.id}
+    ;;
     relationship: many_to_one
   }
 
   join: users {
+    view_label: "Ordering Users"
     type: left_outer
     sql_on: ${order_items.user_id} = ${users.id} ;;
     relationship: many_to_one

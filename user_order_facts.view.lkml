@@ -21,7 +21,7 @@ view: user_order_facts {
 
 
   filter: lifetime_value_date_range {
-    view_label: "Users"
+    view_label: "Ordering Users"
     label: "Lifetime Orders Range"
     type: date_time
   }
@@ -41,7 +41,8 @@ view: user_order_facts {
   }
 
   measure: average_lifetime_revenue {
-    view_label: "Users"
+    view_label: "Ordering Users"
+    description: "Calculates the total lifetime order value (doesn't subtract returns)"
     type: average
     sql:  ${lifetime_revenue} ;;
     value_format_name: usd

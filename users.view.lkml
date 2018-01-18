@@ -55,6 +55,11 @@ view: users {
   dimension: email {
     type: string
     sql: ${TABLE}.email ;;
+    link: {
+      url: "/dashboards/880?user_id={{ id._value }}"
+      label: "Go To User Web Activity"
+      icon_url: "http://looker.com/favicon.ico"
+    }
   }
 
   filter: user_email_selector {
