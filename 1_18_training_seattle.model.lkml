@@ -61,6 +61,7 @@ explore: order_items {
 
 
 explore: events {}
+explore: distribution_centers {}
 
 
 
